@@ -4,21 +4,14 @@
     "href": "blog.html",
     "title": "Quarto Blog",
     "section": "",
-    "text": "Simple Visualisation\n\n\n\n\n\n\nML\n\n\n\n\n\n\n\n\n\nFeb 14, 2025\n\n\nNipun Batra\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome\n\n\n\n\n\nWelcome Post\n\n\n\n\n\nFeb 14, 2025\n\n\nNipun Batra\n\n\n\n\n\n\nNo matching items"
+    "text": "No matching items"
   },
   {
-    "objectID": "posts/welcome.html",
-    "href": "posts/welcome.html",
-    "title": "Welcome",
+    "objectID": "posts/blog.html",
+    "href": "posts/blog.html",
+    "title": "Quarto Template",
     "section": "",
-    "text": "Welcome\nHello world, this is my first blog post.\nI can write in markdown\nprint(\"Hello World\")\nI can also write math equations:\n\\[\ny = x^2\n\\]\nI can create lists easily:\n\nOne\nTwo\n\nI can also create numbered lists:\n\nOne\nTwo\n\nOr, create a table:\n\n\n\nName\nAge\n\n\n\n\nAlice\n20\n\n\nBob\n21"
-  },
-  {
-    "objectID": "posts/visualisation.html",
-    "href": "posts/visualisation.html",
-    "title": "Simple Visualisation",
-    "section": "",
-    "text": "import numpy as np\nimport matplotlib.pyplot as plt\n%matplotlib inline\n%config InlineBackend.figure_format = 'retina'\n\n\nx = np.linspace(0, 10, 100)\ny = np.sin(x)\n\nplt.plot(x, y)"
+    "text": "Title: Getting Started with Taipy Python: A Comprehensive Guide\n\n\nIntroduction:\n\n\nOverview of Taipy: Provide a brief introduction to Taipy Python, explaining that it’s a powerful library designed to build data-driven applications, combining the flexibility of Python with modern features. Purpose of Taipy: Explain the tool’s purpose—creating dynamic and interactive applications, particularly focused on automation, optimization, and easy user interfaces for visualizing and interacting with data. Target Audience: Mention who benefits from using Taipy, such as data scientists, engineers, and developers aiming to create intuitive applications. Why Taipy?: Mention why Taipy stands out compared to other Python libraries (e.g., better integration for UI, scalability, and the ease of creating dashboards and applications).\n\n\nInstallation & Setup:\n\n\nPre-requisites: List any dependencies or tools needed (like Python version, pip, or Anaconda). Steps for Installation:     &nbsp1.  Install using pip or Anaconda.     &nbsp2.  Provide the command for installation."
   },
   {
     "objectID": "index.html",
