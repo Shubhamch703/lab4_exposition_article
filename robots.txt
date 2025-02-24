@@ -1,1 +1,1 @@
-Sitemap: https://nipunbatra.github.io/quarto-template/sitemap.xml
+Sitemap: https://Shubhamch703.github.io/lab4_exposition_article/sitemap.xml
