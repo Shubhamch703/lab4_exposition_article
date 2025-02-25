@@ -233,6 +233,24 @@ Date pickers to choose data ranges.
 “Apply” button to update visualizations dynamically.
 </li>
 </ul>
+<strong>🔹 Extensive Charting Options</strong><br>
+<ul>
+<li>
+Built-in chart types: Line, bar, scatter, heatmaps, and geographic maps.
+</li>
+<li>
+Plotly integration: Advanced interactivity (zoom, hover tooltips, annotations).
+</li>
+</ul>
+<strong>🔹 Data-Driven Applications </strong><br>
+<ul>
+<li>
+Directly bind datasets (CSV, SQL, APIs) to UI components.
+</li>
+<li>
+Features: Auto-syncing tables, dynamic filters, and pagination.
+</li>
+</ul>
 <p></p>
 <p style="font-size: 30px;">
 <strong>Code Examples:</strong>
@@ -248,19 +266,21 @@ Date pickers to choose data ranges.
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    tgb.chart(data<span class="op">=</span><span class="st">"</span><span class="sc">{chart_data}</span><span class="st">"</span>,mode<span class="op">=</span><span class="st">'lines'</span>, x<span class="op">=</span><span class="st">"Timestamp"</span>, y<span class="op">=</span><span class="st">"PM2.5"</span>, layout<span class="op">=</span><span class="st">"</span><span class="sc">{layout}</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p style="font-size: 18px;">
-This is how we define the layout of the page we want to create. This page will have one text at top written as “Select State” and there will be a dropdown selector below it. The default of dropdown will be the intial assigned value of variable selected_state and the available options will be lov(list of values ) - available_state. And we define a chart which will change on different values of selector.<br><br> Here is how the layout for this code will look like :
+This is how we define the layout of the page we want to create. This page will have one text at top written as “Select State” and there will be a dropdown selector below it. The default of dropdown will be the intial assigned value of variable selected_state and the available options will be lov(list of values ) - available_state. And we define a chart which will change on different values of selector.<br><br> Here is how the output layout for this code will look like :
 </p>
 <p><img src="https://raw.githubusercontent.com/Shubhamch703/psdv_J038_lab4/main/Screenshot%202025-02-25%20115957.png" alt="Screenshot" width="900" height="400"></p>
 <p style="font-size: 18px;">
-</p><p><strong>b) Plotting a Bar Chart</strong></p><strong>
+</p><p><strong>b) Plotting a Bar Chart</strong></p>
 <p style="font-size: 18px;">
-</p><p>First we need to assign a on_change or on_apply action to selector,slider,etc. So that on change of the value in selector/slider the chart also changes dynamically.</p>
+First we need to assign a on_change or on_apply action to selector,slider,etc. So that on change of the value in selector/slider the chart also changes dynamically.
+</p>
 <div id="cell-21" class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>tgb.selector(value<span class="op">=</span><span class="st">"</span><span class="sc">{selected_year}</span><span class="st">"</span>, lov<span class="op">=</span>available_years, on_change<span class="op">=</span>update_data,dropdown<span class="op">=</span><span class="va">True</span>, </span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    label<span class="op">=</span><span class="st">"Year"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p style="font-size: 18px;">
-</p><p>Now we will define a update_data which takes ‘state’ as parameter and does not require any arguement when calling it. state refers to the current time at which the action has triggered. state will change the value of desired variables according to that change. For example i want the chart to change every time i change year from the selector. So the desired update_data function will look like :</p>
+Now we will define a update_data which takes ‘state’ as parameter and does not require any arguement when calling it. state refers to the current time at which the action has triggered. state will change the value of desired variables according to that change. For example i want the chart to change every time i change year from the selector. So the desired update_data function will look like :
+</p>
 <div id="cell-23" class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> update_data(state):</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    state.selected_year <span class="op">=</span> state.selected_year</span>
@@ -268,7 +288,8 @@ This is how we define the layout of the page we want to create. This page will h
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    state.layout <span class="op">=</span> {<span class="st">"yaxis"</span>: {<span class="st">"title"</span>: <span class="st">"PM2.5 Levels"</span>}, <span class="st">"title"</span>: <span class="ss">f"Top 10 States with highest PM2.5 Level in </span><span class="sc">{</span>state<span class="sc">.</span>selected_year<span class="sc">}</span><span class="ss">"</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p style="font-size: 18px;">
-</p><p>This function upon called using selector will change three values- selected_year which will be chosen by user and using this value of year the chart_data will change by the function get_top_states which will take the arguement selected_year and at last the layout will also be changed.<br> Now we will look at the function get_top states :</p>
+This function upon called using selector will change three values- selected_year which will be chosen by user and using this value of year the chart_data will change by the function get_top_states which will take the arguement selected_year and at last the layout will also be changed.<br> Now we will look at the function get_top states :
+</p>
 <div id="cell-25" class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_top_states(year):</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    filtered_df <span class="op">=</span> df[df[<span class="st">"Year"</span>] <span class="op">==</span> year]</span>
@@ -283,10 +304,14 @@ This is how we define the layout of the page we want to create. This page will h
 <span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p style="font-size: 18px;">
-</p><p>This will return a dataframe to variable chart_data which is eventually used to plot the chart in page.</p>
+This will return a dataframe to variable chart_data which is eventually used to plot the chart in page.
+</p>
 <p style="font-size: 18px;">
-</p><p><strong> c) Styling and Customization&gt;</strong></p><strong>
-<p>We can also customize colors, font, themes etc.</p>
+<strong> c) Styling and Customization&gt;</strong>
+
+</p><p style="font-size: 18px;">
+We can also customize colors, font, themes etc.
+</p>
 <div id="cell-29" class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>page <span class="op">=</span> <span class="st">"""</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;style&gt;</span></span>
@@ -301,58 +326,88 @@ This is how we define the layout of the page we want to create. This page will h
 <span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p style="font-size: 18px;">
-</p><p>Taipy allows CSS-like customization for styling the dashboard.</p>
+Taipy allows CSS-like customization for styling the dashboard.
+</p>
 <p style="font-size: 30px;">
 <strong>Screenshots &amp; Visuals:</strong>
 </p>
 <p style="font-size: 18px;">
-</p><p><strong>Visual Elements in Taipy</strong></p><strong>
+<strong>Visual Elements in Taipy</strong>
+</p>
 <p style="font-size: 18px;">
 <strong>
 </strong></p><li><strong>
-<p>Slider</p>
+Slider
+</strong></li><strong>
+</strong>
+<p></p>
 <p><img src="https://raw.githubusercontent.com/Shubhamch703/psdv_J038_lab4/main/Screenshot%202025-02-25%20123326.png" alt="Screenshot" width="700" height="120"></p>
 <p style="font-size: 18px;">
 <strong>
-</strong></p></strong></li><li><strong><strong>
-<p>Selector</p>
+</strong></p><li><strong>
+Selector
+</strong></li><strong>
+</strong>
+<p></p>
 <p><img src="https://raw.githubusercontent.com/Shubhamch703/psdv_J038_lab4/main/Screenshot%202025-02-25%20123346.png" alt="Screenshot" width="860" height="500"></p>
 <p style="font-size: 18px;">
 <strong>
-</strong></p></strong></strong></li><li><strong><strong><strong>
-<p>Date</p>
+</strong></p><li><strong>
+Date
+</strong></li><strong>
+</strong>
+<p></p>
 <p><img src="https://raw.githubusercontent.com/Shubhamch703/psdv_J038_lab4/main/Screenshot%202025-02-25%20123438.png" alt="Screenshot" width="700" height="400"></p>
 <p style="font-size: 18px;">
 <strong>
-</strong></p></strong></strong></strong></li><li><strong><strong><strong>
-<p>Button</p>
+</strong></p><li><strong>
+Button
+</strong></li><strong>
+</strong>
+<p></p>
 <p><img src="https://raw.githubusercontent.com/Shubhamch703/psdv_J038_lab4/main/Screenshot%202025-02-25%20123444.png" alt="Screenshot" width="400" height="200"></p>
 <p style="font-size: 18px;">
-</p><p><strong>Graphs</strong></p><strong>
+<strong>Graphs</strong>
+</p>
 <p style="font-size: 18px;">
 <strong>
-</strong></p></strong></strong></strong></strong></li><li><strong><strong><strong>
-<p>Bar Graph</p>
+</strong></p><li><strong>
+Bar Graph
+</strong></li><strong>
+</strong>
+<p></p>
 <p><img src="https://raw.githubusercontent.com/Shubhamch703/psdv_J038_lab4/main/Screenshot%202025-02-25%20124938.png" alt="Screenshot" width="900" height="400"></p>
 <p style="font-size: 18px;">
 <strong>
-</strong></p></strong></strong></strong></li><li><strong><strong><strong>
-<p>Line Graph</p>
+</strong></p><li><strong>
+Line Graph
+</strong></li><strong>
+</strong>
+<p></p>
 <p><img src="https://raw.githubusercontent.com/Shubhamch703/psdv_J038_lab4/main/Screenshot%202025-02-25%20125025.png" alt="Screenshot" width="900" height="400"></p>
 <p style="font-size: 18px;">
 <strong>
-</strong></p></strong></strong></strong></li><li><strong><strong><strong>
-<p>Pie Chart</p>
+</strong></p><li><strong>
+Pie Chart
+</strong></li><strong>
+</strong>
+<p></p>
 <p><img src="https://raw.githubusercontent.com/Shubhamch703/psdv_J038_lab4/main/Screenshot%202025-02-25%20125352.png" alt="Screenshot" width="800" height="400"></p>
 <p style="font-size: 18px;">
 <strong>
-</strong></p></strong></strong></strong></li><li><strong><strong><strong>
-<p>Heatmap</p>
+</strong></p><li><strong>
+Heatmap
+</strong></li><strong>
+</strong>
+<p></p>
 <p><img src="https://raw.githubusercontent.com/Shubhamch703/psdv_J038_lab4/main/Screenshot%202025-02-25%20125428.png" alt="Screenshot" width="800" height="600"></p>
 <p style="font-size: 18px;">
 <strong>
-</strong></p></strong></strong></strong></li><li><strong><strong><strong>
-<p>Dashboard</p>
+</strong></p><li><strong>
+Dashboard
+</strong></li><strong>
+</strong>
+<p></p>
 <p><img src="https://raw.githubusercontent.com/Shubhamch703/psdv_J038_lab4/main/Screenshot%202025-02-25%20130214.png" alt="Screenshot" width="900" height="600"></p>
 <p style="font-size: 30px;">
 <strong>Use Cases:</strong>
@@ -393,16 +448,16 @@ By following this guide, you can customize your own Taipy dashboards and expand 
 <p style="font-size: 30px;">
 <strong>References &amp; Further Reading:</strong>
 </p>
-</strong></strong></strong></li><li><strong><strong>
+<li>
 <a href="https://docs.taipy.io/en/latest/" target="_blank">Taipy Official Documentation</a>
-</strong></strong></li><strong><strong>
+</li>
 <li>
 <a href="https://github.com/Avaiga/taipy" target="_blank">Taipy GitHub Repository</a>
 </li>
 
 
 
-</strong></strong></strong></strong></strong></main><strong><strong> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -820,9 +875,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-</strong></strong></div><strong><strong> <!-- /content -->
+</div> <!-- /content -->
 
 
 
 
-</strong></strong></body></html>
+</body></html>
